@@ -1,0 +1,38 @@
+{
+  "name": "claude-animated-shorts-engineering",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "npm workspace root. It exists so sources outside studio/ (templates/bridge, src/npc) resolve the same single copy of three and postprocessing as the studio.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "workspaces": [
+    "studio"
+  ],
+  "scripts": {
+    "test": "node --import tsx --test \"tests/*.test.ts\"",
+    "typecheck": "npm run typecheck --workspace studio",
+    "build": "npm run build --workspace studio",
+    "compositions": "npm run compositions --workspace studio",
+    "studio": "npm run studio --workspace studio",
+    "render:video": "npm run render:video --workspace studio",
+    "render:stills": "npm run render:stills --workspace studio",
+    "render:all": "npm run render:all --workspace studio",
+    "render:repro": "npm run render:repro --workspace studio",
+    "qa:source": "python tests/visual/measure_source.py",
+    "qa:compare": "python tests/visual/compare_source.py",
+    "qa:shading": "python tests/visual/shading_probe.py",
+    "qa:visual": "python tests/visual/run_visual_qa.py"
+  },
+  "dependencies": {
+    "postprocessing": "6.39.6",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

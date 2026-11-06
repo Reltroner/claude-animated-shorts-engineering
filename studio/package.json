@@ -1,0 +1,35 @@
+{
+  "name": "white-ball-studio",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Minimal Remotion app that renders WB-NPC-001 through the existing Pen / Pool / Actor engine.",
+  "license": "MIT",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "compositions": "remotion compositions src/index.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "remotion bundle src/index.ts --out-dir=../.local/p3-white-ball/bundle-cli --overwrite",
+    "render:video": "node scripts/render-p3.mjs video",
+    "render:stills": "node scripts/render-p3.mjs stills",
+    "render:all": "node scripts/render-p3.mjs all",
+    "render:repro": "node scripts/render-p3.mjs repro"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.8.2",
+    "@remotion/three": "4.0.541",
+    "postprocessing": "6.39.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.541",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "4.0.541",
+    "@remotion/cli": "4.0.541",
+    "@remotion/renderer": "4.0.541",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.187.0",
+    "typescript": "5.9.3"
+  }
+}

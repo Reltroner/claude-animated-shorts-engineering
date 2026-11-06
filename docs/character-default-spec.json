@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0-proposed",
+  "characterId": "WB-NPC-001",
+  "status": "REFERENCE_EXTRACTED__RIG_UNAPPROVED",
+  "role": "main-default-npc",
+  "source": {
+    "video": "gemini_generated_video_df8deaea.mp4",
+    "sha256": "4fcd0b4dd28ba4fce72ae3a83df2162f4533a9c19a20220b1daf79707ecdae48",
+    "width": 1280,
+    "height": 720,
+    "fpsNumerator": 24,
+    "fpsDenominator": 1,
+    "frames": 240
+  },
+  "identity": {
+    "body": "white circular with continuous black outline",
+    "lowerShade": "soft lavender gray",
+    "hands": {
+      "count": 2,
+      "geometry": "detached small white circles",
+      "outline": "black"
+    },
+    "mouth": "pink with rounded black outline",
+    "eyes": "two black outlined expressive shapes",
+    "groundShadow": "soft gray ellipse",
+    "forbid": [
+      "long arms",
+      "legs",
+      "clothes",
+      "nose",
+      "hair",
+      "ears",
+      "realistic metal sphere"
+    ]
+  },
+  "expressions": [
+    "default",
+    "happy-closed",
+    "wink",
+    "surprised",
+    "tired",
+    "anxious",
+    "sparkly-happy"
+  ],
+  "actions": [
+    "idle",
+    "hop",
+    "float",
+    "look-left",
+    "look-right",
+    "wave",
+    "react"
+  ],
+  "sourceFrameRanges": [
+    {
+      "first": 0,
+      "last": 24,
+      "expression": "default"
+    },
+    {
+      "first": 25,
+      "last": 45,
+      "expression": "happy-closed"
+    },
+    {
+      "first": 46,
+      "last": 77,
+      "expression": "wink"
+    },
+    {
+      "first": 78,
+      "last": 107,
+      "expression": "surprised"
+    },
+    {
+      "first": 108,
+      "last": 133,
+      "expression": "tired"
+    },
+    {
+      "first": 134,
+      "last": 164,
+      "expression": "anxious"
+    },
+    {
+      "first": 165,
+      "last": 239,
+      "expression": "sparkly-happy"
+    }
+  ],
+  "productionRules": {
+    "reuseSameGeometry": true,
+    "sceneControlsCharacterAction": true,
+    "faceIsRigged": true,
+    "referenceFramesPrivateByDefault": true,
+    "requireHumanVisualAcceptance": true,
+    "apiSpendAllowed": false
+  }
+}
