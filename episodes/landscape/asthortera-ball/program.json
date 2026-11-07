@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "reltroner.p7a/1",
+  "kind": "program",
+  "programId": "asthortera-ball",
+  "seriesCode": "AB-TV",
+  "title": "Asthortera Ball",
+  "universeId": "asthortera",
+  "characterPerformanceProfileId": "countryball-3d-p6",
+  "defaultFormat": {
+    "id": "landscape-1080p",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "sourceRegistry": {
+    "masterConstitution": {
+      "repository": "Reltroner/reltroner-studio-remodeling",
+      "path": "content/principles/reltroner-studio-master-source-of-truth.md",
+      "revision": "845574247e87301cdd50356202d112533dceba39",
+      "authority": "master"
+    },
+    "franchiseBible": {
+      "repository": "Reltroner/reltroner-studio-remodeling",
+      "path": "content/series/asthortera-ball.md",
+      "revision": "625a9df0389499a573383292a5b97858901fc91f",
+      "authority": "franchise"
+    },
+    "countryballGuide": {
+      "repository": "Reltroner/reltroner-studio-remodeling",
+      "path": "content/characters/asthortera-countryball-characters.md",
+      "revision": "b1b0c0b2074c7ee343742a2cc3343a07369c55b1",
+      "authority": "character"
+    },
+    "tvProductionContract": {
+      "repository": "Reltroner/progress-documentation",
+      "path": "RELTRONER STUDIO — Faceless YouTube Production Architecture 2026+/14-ASTHORTERA-BALL-TV-SEASON-AND-P7-INTEGRATION.md",
+      "revision": "f1200543cc5e046fe049e29b2eabd216a82e395d",
+      "authority": "production"
+    }
+  },
+  "seasonIds": [
+    "AB-TV-S01"
+  ]
+}
