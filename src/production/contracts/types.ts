@@ -12,6 +12,7 @@ export type StoryStatus =
 
 export type NarrativeMode = 'current-lore' | 'backstory' | 'wiki';
 export type SourceAuthority = 'master' | 'franchise' | 'character' | 'production';
+export type CastScope = 'countryball-civilizations' | 'unrestricted';
 
 /** Each source is pinned once, at program scope. Seasons/episodes reference keys, not copied hashes. */
 export interface SourcePin {
@@ -37,6 +38,8 @@ export interface ProgramManifest {
   readonly universeId: string;
   /** Reference only; P7B implements the real national-character adapter. */
   readonly characterPerformanceProfileId: string;
+  /** Nation/civilization personifications only for the initial Asthortera TV program. */
+  readonly castScope: CastScope;
   readonly defaultFormat: FormatProfile;
   readonly sourceRegistry: Readonly<Record<string, SourcePin>>;
   readonly seasonIds: readonly string[];
