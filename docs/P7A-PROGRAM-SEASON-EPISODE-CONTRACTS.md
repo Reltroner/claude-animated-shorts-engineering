@@ -53,6 +53,7 @@ The CLI is **read-only** and prints its PASS/FAIL result; `npm run p7a:validate 
 
 ## Contracts
 
+- **Program:** `castScope = countryball-civilizations` restricts the initial TV contract to countryball identities; P7B must additionally verify actual nation IDs against the approved character registry (the P7A scope check alone does not establish character canon).
 - **Program:** immutable `programId`, `seriesCode`, universe, default 16:9 1920×1080/30fps profile, `characterPerformanceProfileId` referencing **countryball-3d-p6**, pinned source registry, declared seasons.
 - **Season:** independent season ID/ordinal, status, source-key references, first episode ID and ordered episode list. Not a second franchise bible.
 - **Episode:** linked program/season ID, ordinal, development-only story status, cast IDs, narrative modes, scene ID references, and **independent technical/creative/canon/publication gates**.
