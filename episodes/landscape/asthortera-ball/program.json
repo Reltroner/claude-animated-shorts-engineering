@@ -40,5 +40,6 @@
   },
   "seasonIds": [
     "AB-TV-S01"
-  ]
+  ],
+  "castScope": "countryball-civilizations"
 }
