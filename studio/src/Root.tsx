@@ -5,7 +5,7 @@ import { Composition } from 'remotion';
 import { WB_EXPRESSIONS, whiteBallSequenceFrames } from '../../src/npc/white-ball';
 import { FPS as PILOT_FPS, FRAMES as PILOT_FRAMES, HEIGHT as PILOT_HEIGHT, WIDTH as PILOT_WIDTH } from '../../src/pilot/archive/episode';
 import { WB_TEST_FPS, WB_TEST_HEIGHT, WB_TEST_SEGMENTS, WB_TEST_WIDTH } from './timeline';
-import { P7B_LANDSCAPE, P7B_PREVIEW, P7B_PROOF_FRAMES } from './production/CountryballLandscapeScene';
+import { P7B_LANDSCAPE, P7B_PREVIEW, P7B_PROOF_FRAMES } from '../../src/production/nations/proofTimeline';
 
 type InspectLayout = 'vertical' | 'reference';
 const inspectDefaults = {
