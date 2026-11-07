@@ -30,6 +30,7 @@ test('P7A: landscape 30 FPS and P6 profile are references, not a rewritten rende
   const p = parseProgram(program);
   assert.deepEqual(p.defaultFormat, { id: 'landscape-1080p', width: 1920, height: 1080, fps: 30 });
   assert.equal(p.characterPerformanceProfileId, 'countryball-3d-p6');
+  assert.equal(p.castScope, 'countryball-civilizations');
 });
 
 test('P7A: S1E1 cast follows current Pencilfania opening, not a proposed Pasgerflit rewrite', () => {
@@ -90,6 +91,18 @@ test('P7A negative: unknown manifest fields are rejected, not silently accepted'
 test('P7A negative: source keys must resolve to program-scoped pins', () => {
   const e = clone(episode) as Record<string, any>;
   e.sourceKeys.push('imaginaryCanon');
+  expectInvalid(() => validateP7AHierarchy(program, season, [e]), /unknown sourceKey/);
+});
+
+test('P7A negative: the countryball program rejects species-centered cast IDs', () => {
+  const e = clone(episode) as Record<string, any>;
+  e.castIds.push('phantomkind');
+  expectInvalid(() => validateP7AHierarchy(program, season, [e]), /cast outside countryball scope/);
+});
+
+test('P7A negative: inherited keys are not accepted as registered canon source references', () => {
+  const e = clone(episode) as Record<string, any>;
+  e.sourceKeys.push('constructor');
   expectInvalid(() => validateP7AHierarchy(program, season, [e]), /unknown sourceKey/);
 });
 
