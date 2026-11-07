@@ -46,7 +46,7 @@ test('nothing in the character or the staging reads a clock or randomness, and u
     }
   }
   const scene = strip(read('studio/src/pilot/ArchiveScene3D.tsx'));
-  const calls = scene.match(/useFrame\([^\n]*/g) ?? [];
+  const calls = scene.match(/useFrame\([^\r\n]*/g) ?? [];
   assert.equal(calls.length, 1);
   assert.equal(calls[0], 'useFrame(() => { post.composer.render(); }, 1);', 'no delta, no state, a positive priority');
 });
