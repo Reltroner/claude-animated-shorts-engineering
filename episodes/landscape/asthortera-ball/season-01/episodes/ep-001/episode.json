@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "reltroner.p7a/1",
+  "kind": "episode",
+  "programId": "asthortera-ball",
+  "seasonId": "AB-TV-S01",
+  "episodeId": "AB-TV-S01E01",
+  "episodeNumber": 1,
+  "workingTitle": "The Pencilfania Problem",
+  "storyStatus": "development-material",
+  "sourceKeys": [
+    "franchiseBible",
+    "countryballGuide"
+  ],
+  "castIds": [
+    "henchowayball",
+    "pencilfaniaball",
+    "reltronlandball"
+  ],
+  "narrativeModes": [
+    "current-lore"
+  ],
+  "sceneIds": [],
+  "approval": {
+    "technical": "pending",
+    "creative": "pending",
+    "canonFreeze": false,
+    "publication": "blocked"
+  }
+}
