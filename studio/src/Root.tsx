@@ -5,6 +5,7 @@ import { Composition } from 'remotion';
 import { WB_EXPRESSIONS, whiteBallSequenceFrames } from '../../src/npc/white-ball';
 import { FPS as PILOT_FPS, FRAMES as PILOT_FRAMES, HEIGHT as PILOT_HEIGHT, WIDTH as PILOT_WIDTH } from '../../src/pilot/archive/episode';
 import { WB_TEST_FPS, WB_TEST_HEIGHT, WB_TEST_SEGMENTS, WB_TEST_WIDTH } from './timeline';
+import { P7B_LANDSCAPE, P7B_PREVIEW, P7B_PROOF_FRAMES } from './production/CountryballLandscapeScene';
 
 type InspectLayout = 'vertical' | 'reference';
 const inspectDefaults = {
@@ -42,6 +43,18 @@ export const Root: React.FC = () => (
       lazyComponent={() => import('./compositions/WhiteBallArchivePilot3D')}
       durationInFrames={PILOT_FRAMES}
       fps={PILOT_FPS} width={PILOT_WIDTH / 2} height={PILOT_HEIGHT / 2}
+    />
+    <Composition
+      id="CountryballLandscapeProof"
+      lazyComponent={() => import('./compositions/CountryballLandscapeProof')}
+      durationInFrames={P7B_PROOF_FRAMES}
+      fps={P7B_LANDSCAPE.fps} width={P7B_LANDSCAPE.width} height={P7B_LANDSCAPE.height}
+    />
+    <Composition
+      id="CountryballLandscapeProofPreview"
+      lazyComponent={() => import('./compositions/CountryballLandscapeProof')}
+      durationInFrames={P7B_PROOF_FRAMES}
+      fps={P7B_PREVIEW.fps} width={P7B_PREVIEW.width} height={P7B_PREVIEW.height}
     />
     <Composition
       id="WhiteBallInspect"
