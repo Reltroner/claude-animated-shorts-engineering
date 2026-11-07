@@ -5,7 +5,6 @@
  * cards, third-party models, clocks, externally loaded assets, or dialog.
  */
 import React, { useMemo } from 'react';
-import * as THREE from 'three';
 import { ThreeCanvas } from '@remotion/three';
 import { useThree } from '@react-three/fiber';
 import {
@@ -15,27 +14,13 @@ import {
   whiteBallPose, type WBAction, type WBExpression,
 } from '../../../src/npc/white-ball';
 import {
-  NationalCharacter3D, resolveNationalCast,
+  NationalCharacter3D, resolveNationalCast, p7bCameraAt,
   type NationalProfile, type NationalProfileId,
 } from '../../../src/production/nations';
 
 const SPOTS = [-2.30, -0.76, 0.76, 2.30] as const;
 const ACTIONS: readonly WBAction[] = ['idle', 'wave', 'look-right', 'react'];
 const EXPRESSIONS: readonly WBExpression[] = ['default', 'happy-closed', 'default', 'surprised'];
-
-export const P7B_PROOF_FPS = 30;
-export const P7B_PROOF_FRAMES = 120;
-export const P7B_LANDSCAPE = { width: 1920, height: 1080, fps: P7B_PROOF_FPS } as const;
-export const P7B_PREVIEW = { width: 960, height: 540, fps: P7B_PROOF_FPS } as const;
-
-export function p7bCameraAt(frame: number): readonly [number, number, number] {
-  if (!Number.isSafeInteger(frame) || frame < 0 || frame >= P7B_PROOF_FRAMES) {
-    throw new Error('P7B invalid frame: ' + frame);
-  }
-  const progress = frame / (P7B_PROOF_FRAMES - 1);
-  const ease = progress * progress * (3 - 2 * progress);
-  return [-0.32 + ease * 0.64, 1.77, 8.30 - 0.36 * ease] as const;
-}
 
 /** This camera is not attached to a character; its small movement reveals genuine parallax. */
 const CameraPose: React.FC<{ frame: number }> = ({ frame }) => {
