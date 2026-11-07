@@ -43,7 +43,13 @@
     "p6:mux": "node --import tsx studio/scripts/mux-p6.ts",
     "p6:qa": "node studio/scripts/p5-python.mjs tests/visual/p6_video_qa.py",
     "p7a:validate": "node --import tsx studio/scripts/production/validate-p7a.ts",
-    "p7a:test": "node --import tsx --test tests/p7a-contracts.test.ts"
+    "p7a:test": "node --import tsx --test tests/p7a-contracts.test.ts",
+    "p7b:test": "node --import tsx --test tests/p7b-nations.test.ts",
+    "p7b:stills": "node studio/scripts/production/render-p7b.mjs stills",
+    "p7b:preview": "node studio/scripts/production/render-p7b.mjs preview",
+    "p7b:final": "node studio/scripts/production/render-p7b.mjs final",
+    "p7b:verify": "node studio/scripts/production/render-p7b.mjs verify final",
+    "p7b:verify:preview": "node studio/scripts/production/render-p7b.mjs verify preview"
   },
   "dependencies": {
     "postprocessing": "6.39.6",
