@@ -1,6 +1,6 @@
 # P7A — Program / Season / Episode Contracts
 
-**Status:** Implemented as a data-only, additive contract layer on `feat/p7a-program-season-episode-contracts`. **No P7 landscape composition, country-specific 3D character adapter, long-form render, synthetic dialogue or published episode is claimed.**
+**Status (2026-11-07):** Source implementation squash-merged into **`main`** via [PR #1](https://github.com/Reltroner/claude-animated-shorts-engineering/pull/1) at commit `332c599cead10027a2524aa9048122f6ae7536c2`. Local Windows npm validation and owner creative acceptance remain **pending**. **No P7 landscape composition, country-specific 3D character adapter, long-form render, synthetic dialogue or published episode is claimed.**
 
 ## Objective
 
@@ -37,9 +37,9 @@ Do not duplicate story text, canonical facts or SHA pins across three manifests.
 From `PS C:/Projects/claude-animated-shorts-engineering>`:
 
 ```powershell
-git fetch origin
-git switch feat/p7a-program-season-episode-contracts
-npm ci
+git switch main
+git fetch origin main
+git merge --ff-only origin/main
 npm run p7a:validate
 npm run p7a:test
 npm run typecheck
@@ -47,7 +47,7 @@ npm test
 npm run build
 ```
 
-`npm ci` uses the **existing lockfile**; no dependency or lockfile version is changed. On the first run on a new machine, npm may need to download dependencies under the existing npm workspace; it does not call paid video APIs.
+Run these in the **single existing local checkout on `main` only**. Do not create local feature branches, additional Git worktrees or detached working copies. `git merge --ff-only` rejects a diverged local main rather than rewriting it. If node modules are absent, run `npm ci` with the **existing lockfile**; this installs dependencies but changes neither the source manifest nor `package-lock.json` on a successful clean install. No paid video API is required.
 
 The CLI is **read-only** and prints its PASS/FAIL result; `npm run p7a:validate -- --json` gives a machine-readable summary. Scripts never alter canon or write renders.
 
@@ -69,6 +69,13 @@ Identity format: season `{seriesCode}-S##`, episode `{seasonId}E##`. Season open
 - Reject broken program/season/episode links, wrong ordinals, missing episode files, duplicates and opening changes.
 - Reject unreviewed release, illegal development-material freeze and published-canon claims lacking technical/creative approval.
 - Keep technical validation **separate** from owner creative approval. An automated PASS does not authorize a change in published lore or upload a video.
+
+## Main-only working-copy and PR governance (owner direction, 2026-11-07)
+
+- Exactly **one owner-local working checkout**, normally on `main`. No extra `git worktree`, no persistent local progress branch, and no destructive reset/clean to conceal a dirty tree.
+- GitHub `main` is the canonical committed baseline; verify `git rev-parse HEAD`, `git rev-parse origin/main`, `git status --porcelain` and `git diff --quiet HEAD origin/main` before declaring tracked source identical.
+- Any future P7B–P7F feature PR must have **base `main` directly**. A temporary remote PR head is not an additional owner-local working tree. Do not chain feature branches into each other.
+- Post-merge, fast-forward the owner's local `main`, verify the commit SHA, then run appropriate contract/build/regression tests. A successful GitGuardian check is **only a security check**, not a substitute for npm tests or human video review.
 
 ## Non-goals and future handoff
 
