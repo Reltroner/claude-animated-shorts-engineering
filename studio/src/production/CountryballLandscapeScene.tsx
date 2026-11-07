@@ -14,7 +14,7 @@ import {
   whiteBallPose, type WBAction, type WBExpression,
 } from '../../../src/npc/white-ball';
 import {
-  NationalCharacter3D, resolveNationalCast, p7bCameraAt,
+  NationalCharacter3D, resolveNationalCast, p7bCameraAt, P7B_PROOF_FPS,
   type NationalProfile, type NationalProfileId,
 } from '../../../src/production/nations';
 
