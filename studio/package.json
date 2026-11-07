@@ -15,7 +15,11 @@
     "render:repro": "node scripts/render-p3.mjs repro",
     "p5:video": "node scripts/render-p5.mjs video",
     "p5:stills": "node scripts/render-p5.mjs stills",
-    "p5:repro": "node scripts/render-p5.mjs repro"
+    "p5:repro": "node scripts/render-p5.mjs repro",
+    "p6:video": "node scripts/render-p6.mjs video",
+    "p6:stills": "node scripts/render-p6.mjs stills",
+    "p6:repro": "node scripts/render-p6.mjs repro",
+    "p6:bench": "node scripts/render-p6.mjs bench"
   },
   "dependencies": {
     "@react-three/fiber": "9.8.2",

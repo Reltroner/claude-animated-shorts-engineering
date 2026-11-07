@@ -274,7 +274,7 @@ function sweatDrop(p: Pen, phase: number): void {
   g.restore();
 }
 
-function drawFace(p: Pen, expr: WBExpression, pose: WBPose): void {
+export function drawFace(p: Pen, expr: WBExpression, pose: WBPose): void {
   const shift = pose.eyeShift;
   const faceShift = shift * 0.55, mouthShift = shift * 0.35, blink = pose.blink;
   const [lx, ly] = WB_EYE.left, [rx, ry] = WB_EYE.right;

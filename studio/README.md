@@ -28,6 +28,9 @@ All output goes to `.local/p3-white-ball/`, which git ignores.
 | `WhiteBallNpcTest` | 1080x1920, 30 fps | 60 frames | The first playable clip: hop, wave, float, react |
 | `WhiteBallExpressions` | 1080x1920, 1 fps | 7 frames | One expression per frame, for reading each face |
 | `WhiteBallInspect` | 1080x1920 or 1280x720 | 1 frame | Any expression and pose, set through props |
+| `WhiteBallArchivePilot` | 1080x1920, 30 fps | 360 frames | The P5 pilot: the ball as a card in the archive hall |
+| `WhiteBallArchivePilot3D` | 1080x1920, 30 fps | 360 frames | The P6 pilot: a genuine 3D ball in the same hall, with the same story and soundtrack |
+| `WhiteBallArchivePilot3DPreview` | 540x960, 30 fps | 360 frames | The same scene at half size, for cheap motion checks |
 
 To render a single pose yourself, put its props in a JSON file:
 
@@ -37,6 +40,10 @@ New-Item -ItemType Directory -Force out
 '{"expression":"wink","action":"wave","poseFrame":11,"poseFps":30,"layout":"vertical","shading":"npc"}' | Set-Content out/props.json -Encoding ascii
 npx remotion still src/index.ts WhiteBallInspect out/wave.png --props=out/props.json
 ```
+
+## The 3D ball
+
+`src/npc/white-ball-3d/` is WB-NPC-001 as a solid object: a lit sphere, a face made of geometry on its surface, and two real hands. It keeps the P3 identity and action contract, and everything except compiling its shaders runs in Node. `docs/WHITE-BALL-P6-3D-IMPLEMENTATION.md` explains how it works and how to reproduce the film. Its renders go to `.local/p6-white-ball/`.
 
 ## Using the NPC in a scene
 

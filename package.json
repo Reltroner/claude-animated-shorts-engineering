@@ -34,7 +34,14 @@
     "p5:stills": "npm run p5:stills --workspace studio",
     "p5:repro": "npm run p5:repro --workspace studio",
     "p5:mux": "node --import tsx studio/scripts/mux-p5.ts",
-    "p5:qa": "node studio/scripts/p5-python.mjs tests/visual/p5_video_qa.py"
+    "p5:qa": "node studio/scripts/p5-python.mjs tests/visual/p5_video_qa.py",
+    "p6:manifest": "node --import tsx studio/scripts/emit-p6-manifest.ts",
+    "p6:video": "npm run p6:video --workspace studio",
+    "p6:stills": "npm run p6:stills --workspace studio",
+    "p6:repro": "npm run p6:repro --workspace studio",
+    "p6:bench": "npm run p6:bench --workspace studio",
+    "p6:mux": "node --import tsx studio/scripts/mux-p6.ts",
+    "p6:qa": "node studio/scripts/p5-python.mjs tests/visual/p6_video_qa.py"
   },
   "dependencies": {
     "postprocessing": "6.39.6",

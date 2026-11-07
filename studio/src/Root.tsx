@@ -32,6 +32,18 @@ export const Root: React.FC = () => (
       fps={PILOT_FPS} width={PILOT_WIDTH} height={PILOT_HEIGHT}
     />
     <Composition
+      id="WhiteBallArchivePilot3D"
+      lazyComponent={() => import('./compositions/WhiteBallArchivePilot3D')}
+      durationInFrames={PILOT_FRAMES}
+      fps={PILOT_FPS} width={PILOT_WIDTH} height={PILOT_HEIGHT}
+    />
+    <Composition
+      id="WhiteBallArchivePilot3DPreview"
+      lazyComponent={() => import('./compositions/WhiteBallArchivePilot3D')}
+      durationInFrames={PILOT_FRAMES}
+      fps={PILOT_FPS} width={PILOT_WIDTH / 2} height={PILOT_HEIGHT / 2}
+    />
+    <Composition
       id="WhiteBallInspect"
       lazyComponent={() => import('./compositions/WhiteBallInspect')}
       durationInFrames={1}

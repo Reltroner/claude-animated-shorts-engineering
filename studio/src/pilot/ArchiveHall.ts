@@ -37,8 +37,8 @@ export const ARCHIVE_LIGHT = {
 // ---------------------------------------------------------------- local light pools on top of the bridge's two-tone shading
 // twoTone() replaces the direct diffuse term, so three's point lights would have no effect. This adds a small analytic pool
 // term after it: warm around the lanterns, teal around the artifact. It does not touch twoTone or its uniforms.
-const POOL_N = 12;
-const POOLS = {
+export const POOL_N = 12;
+export const POOLS = {
   uPoolPos: { value: Array.from({ length: POOL_N }, () => new THREE.Vector3()) },
   uPoolCol: { value: Array.from({ length: POOL_N }, () => new THREE.Vector3()) },
   uPoolRad: { value: new Array<number>(POOL_N).fill(1) },
