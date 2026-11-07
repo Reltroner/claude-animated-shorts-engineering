@@ -14,11 +14,10 @@ import {
   whiteBallPose, type WBAction, type WBExpression,
 } from '../../../src/npc/white-ball';
 import {
-  NationalCharacter3D, resolveNationalCast, p7bCameraAt, P7B_PROOF_FPS,
+  NationalCharacter3D, resolveNationalCast, p7bCameraAt, p7bCastPositions, P7B_PROOF_FPS,
   type NationalProfile, type NationalProfileId,
 } from '../../../src/production/nations';
 
-const SPOTS = [-2.30, -0.76, 0.76, 2.30] as const;
 const ACTIONS: readonly WBAction[] = ['idle', 'wave', 'look-right', 'react'];
 const EXPRESSIONS: readonly WBExpression[] = ['default', 'happy-closed', 'default', 'surprised'];
 
@@ -98,7 +97,7 @@ const Stage: React.FC<{ frame: number; cast: readonly NationalProfile[] }> = ({ 
       <meshStandardMaterial color="#2c3150" roughness={0.90} />
     </mesh>
     {cast.map((profile, i) => (
-      <Actor key={profile.id} frame={frame} profile={profile} position={SPOTS[i] ?? 0} index={i} />
+      <Actor key={profile.id} frame={frame} profile={profile} position={p7bCastPositions(cast.length)[i]} index={i} />
     ))}
   </>
 );
