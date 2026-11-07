@@ -13,5 +13,5 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["src", "remotion.config.ts", "../src/npc", "../tests"]
+  "include": ["src", "remotion.config.ts", "../src/npc", "../src/pilot", "../tests"]
 }

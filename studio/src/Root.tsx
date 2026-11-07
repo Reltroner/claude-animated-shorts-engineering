@@ -3,6 +3,7 @@
 import React from 'react';
 import { Composition } from 'remotion';
 import { WB_EXPRESSIONS, whiteBallSequenceFrames } from '../../src/npc/white-ball';
+import { FPS as PILOT_FPS, FRAMES as PILOT_FRAMES, HEIGHT as PILOT_HEIGHT, WIDTH as PILOT_WIDTH } from '../../src/pilot/archive/episode';
 import { WB_TEST_FPS, WB_TEST_HEIGHT, WB_TEST_SEGMENTS, WB_TEST_WIDTH } from './timeline';
 
 type InspectLayout = 'vertical' | 'reference';
@@ -23,6 +24,12 @@ export const Root: React.FC = () => (
       lazyComponent={() => import('./compositions/WhiteBallExpressions')}
       durationInFrames={WB_EXPRESSIONS.length}
       fps={1} width={WB_TEST_WIDTH} height={WB_TEST_HEIGHT}
+    />
+    <Composition
+      id="WhiteBallArchivePilot"
+      lazyComponent={() => import('./compositions/WhiteBallArchivePilot')}
+      durationInFrames={PILOT_FRAMES}
+      fps={PILOT_FPS} width={PILOT_WIDTH} height={PILOT_HEIGHT}
     />
     <Composition
       id="WhiteBallInspect"

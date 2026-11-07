@@ -12,7 +12,10 @@
     "render:video": "node scripts/render-p3.mjs video",
     "render:stills": "node scripts/render-p3.mjs stills",
     "render:all": "node scripts/render-p3.mjs all",
-    "render:repro": "node scripts/render-p3.mjs repro"
+    "render:repro": "node scripts/render-p3.mjs repro",
+    "p5:video": "node scripts/render-p5.mjs video",
+    "p5:stills": "node scripts/render-p5.mjs stills",
+    "p5:repro": "node scripts/render-p5.mjs repro"
   },
   "dependencies": {
     "@react-three/fiber": "9.8.2",

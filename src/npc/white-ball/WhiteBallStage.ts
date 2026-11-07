@@ -18,6 +18,8 @@ export type WhiteBallStageOptions = WhiteBallShadeOptions & {
   /** blend the card's own soft alpha at the outline instead of cutting it at 0.5, which leaves a stair-stepped silhouette.
    *  NPC material only: the human cards keep Actor's hard cut-out. */
   smoothEdge?: boolean;
+  /** false keeps a scene's fog off the NPC card, so a hazy hall cannot grey the white body. Default: three's default (on). */
+  fog?: boolean;
 };
 
 export type WhiteBallStageTrace = {
@@ -41,6 +43,7 @@ export class WhiteBallStage {
       if ((this.options.shading ?? 'npc') === 'npc') {
         whiteBallCardShade(a.mat, this.options);
         if (this.options.smoothEdge) { a.mat.transparent = true; a.mat.alphaTest = 0.02; a.mat.needsUpdate = true; }
+        if (this.options.fog === false) { a.mat.fog = false; a.mat.needsUpdate = true; }
       }
       this.actors.push(a);
     }

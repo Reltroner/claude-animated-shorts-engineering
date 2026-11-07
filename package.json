@@ -24,7 +24,17 @@
     "qa:source": "python tests/visual/measure_source.py",
     "qa:compare": "python tests/visual/compare_source.py",
     "qa:shading": "python tests/visual/shading_probe.py",
-    "qa:visual": "python tests/visual/run_visual_qa.py"
+    "qa:visual": "python tests/visual/run_visual_qa.py",
+    "p5:venv": "node studio/scripts/p5-python.mjs --setup",
+    "p5:audit": "node studio/scripts/p5-python.mjs tests/visual/p5_reference_measure.py && node studio/scripts/p5-python.mjs tests/visual/p5_reference_inventory.py",
+    "p5:manifest": "node --import tsx studio/scripts/emit-p5-manifest.ts",
+    "p5:audio": "node studio/scripts/p5-python.mjs studio/audio/archive_pilot_audio.py",
+    "p5:audio:qa": "node studio/scripts/p5-python.mjs tests/visual/p5_audio_qa.py",
+    "p5:video": "npm run p5:video --workspace studio",
+    "p5:stills": "npm run p5:stills --workspace studio",
+    "p5:repro": "npm run p5:repro --workspace studio",
+    "p5:mux": "node --import tsx studio/scripts/mux-p5.ts",
+    "p5:qa": "node studio/scripts/p5-python.mjs tests/visual/p5_video_qa.py"
   },
   "dependencies": {
     "postprocessing": "6.39.6",

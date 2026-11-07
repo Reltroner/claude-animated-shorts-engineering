@@ -1,0 +1,4 @@
+# Exact versions used for the P5 soundtrack and QA. Installed only into the venv under .local/p5-white-ball/.
+numpy==2.3.3
+scipy==1.18.1
+pillow==11.3.0
