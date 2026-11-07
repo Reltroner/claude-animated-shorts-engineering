@@ -28,7 +28,7 @@ const SERIES_CODE = /^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*$/;
 const KEY = /^[a-z][a-zA-Z0-9]*$/;
 const SHA = /^[a-f0-9]{40}$/;
 const REPO = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
-const SAFE_PATH = /^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$))(?!.*\\)(?!.*\/\/)[A-Za-z0-9_. /+-]+$/;
+const SAFE_PATH = /^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$))(?!.*\\)(?!.*\/\/)(?!.*:)[^\u0000-\u001f]+$/u;
 
 type Obj = Record<string, unknown>;
 const obj = (v: unknown): v is Obj =>
