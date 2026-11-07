@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "reltroner.p7a/1",
+  "kind": "season",
+  "programId": "asthortera-ball",
+  "seasonId": "AB-TV-S01",
+  "seasonNumber": 1,
+  "workingTitle": "Season 1 (development)",
+  "storyStatus": "development-material",
+  "sourceKeys": [
+    "masterConstitution",
+    "franchiseBible"
+  ],
+  "openingEpisodeId": "AB-TV-S01E01",
+  "episodeIds": [
+    "AB-TV-S01E01"
+  ]
+}
