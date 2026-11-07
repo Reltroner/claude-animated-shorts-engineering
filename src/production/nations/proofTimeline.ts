@@ -12,3 +12,12 @@ export function p7bCameraAt(frame: number): readonly [number, number, number] {
   const ease = progress * progress * (3 - 2 * progress);
   return [-0.32 + ease * 0.64, 1.77, 8.30 - 0.36 * ease] as const;
 }
+
+/** Symmetric placement for 1–4 characters; adding a cast member cannot push a solo lead off-center. */
+export function p7bCastPositions(count: number): readonly number[] {
+  if (!Number.isSafeInteger(count) || count < 1 || count > 4) {
+    throw new Error('P7B cast positions support 1–4 national profiles');
+  }
+  const gap = 1.52;
+  return Array.from({ length: count }, (_, i) => (i - (count - 1) / 2) * gap);
+}
