@@ -12,7 +12,7 @@ import {
 import {
   NATIONAL_PROFILES, P7B_PROOF_CAST, NationalCharacter3D,
   getNationalProfile, resolveNationalCast, nationalEmblemShapes,
-  P7B_LANDSCAPE, P7B_PREVIEW, P7B_PROOF_FRAMES, p7bCameraAt,
+  P7B_LANDSCAPE, P7B_PREVIEW, P7B_PROOF_FRAMES, p7bCameraAt, p7bCastPositions,
 } from '../src/production/nations';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -113,6 +113,19 @@ test('P7B: landscape and preview share one 120-frame deterministic timebase', ()
   assert.ok(Math.abs(p7bCameraAt(1)[0] - p7bCameraAt(0)[0]) < 0.002);
   assert.ok(Math.abs(p7bCameraAt(119)[0] - p7bCameraAt(118)[0]) < 0.002);
   for (const bad of [-1, 120, NaN, 1.5]) assert.throws(() => p7bCameraAt(bad), /invalid frame/);
+});
+
+test('P7B: 1–4 cast characters remain centered without rewriting a rig', () => {
+  assert.deepEqual(p7bCastPositions(1), [0]);
+  assert.deepEqual(p7bCastPositions(2), [-0.76, 0.76]);
+  assert.deepEqual(p7bCastPositions(4), [-2.2800000000000002, -0.76, 0.76, 2.2800000000000002]);
+  for (const count of [1, 2, 3, 4]) {
+    const xs = p7bCastPositions(count);
+    assert.equal(xs.length, count);
+    assert.ok(Math.abs(xs.reduce((a, b) => a + b, 0)) < 1e-9);
+  }
+  assert.throws(() => p7bCastPositions(0), /1–4/);
+  assert.throws(() => p7bCastPositions(5), /1–4/);
 });
 
 test('P7B: P7A episode remains a development-only Pencilfania story, not the gallery proof', () => {
