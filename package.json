@@ -41,7 +41,9 @@
     "p6:repro": "npm run p6:repro --workspace studio",
     "p6:bench": "npm run p6:bench --workspace studio",
     "p6:mux": "node --import tsx studio/scripts/mux-p6.ts",
-    "p6:qa": "node studio/scripts/p5-python.mjs tests/visual/p6_video_qa.py"
+    "p6:qa": "node studio/scripts/p5-python.mjs tests/visual/p6_video_qa.py",
+    "p7a:validate": "node --import tsx studio/scripts/production/validate-p7a.ts",
+    "p7a:test": "node --import tsx --test tests/p7a-contracts.test.ts"
   },
   "dependencies": {
     "postprocessing": "6.39.6",
