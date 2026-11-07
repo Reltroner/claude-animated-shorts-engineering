@@ -127,7 +127,7 @@ export function parseProgram(raw: unknown): ProgramManifest {
   const errors: string[] = [];
   const p = object(raw, 'program', [
     'schemaVersion', 'kind', 'programId', 'seriesCode', 'title',
-    'universeId', 'characterPerformanceProfileId', 'defaultFormat',
+    'universeId', 'characterPerformanceProfileId', 'castScope', 'defaultFormat',
     'sourceRegistry', 'seasonIds',
   ], errors);
   literal(p.schemaVersion, P7A_SCHEMA_VERSION, 'program.schemaVersion', errors);
@@ -137,6 +137,7 @@ export function parseProgram(raw: unknown): ProgramManifest {
   str(p.title, 'program.title', errors);
   str(p.universeId, 'program.universeId', errors, ID);
   str(p.characterPerformanceProfileId, 'program.characterPerformanceProfileId', errors, ID);
+  if (p.castScope !== 'countryball-civilizations' && p.castScope !== 'unrestricted') errors.push('program.castScope: unsupported cast scope');
   const f = object(p.defaultFormat, 'program.defaultFormat', ['id', 'width', 'height', 'fps'], errors);
   str(f.id, 'program.defaultFormat.id', errors, ID);
   positive(f.width, 'program.defaultFormat.width', errors, 16384);
@@ -227,10 +228,13 @@ export function validateP7AHierarchy(programRaw: unknown, seasonRaw: unknown, ep
     if (ep.seasonId !== season.seasonId) issues.push(ep.episodeId + ': wrong seasonId');
     if (ep.episodeId !== season.seasonId + 'E' + numbered(ep.episodeNumber)) issues.push(ep.episodeId + ': wrong episode ID/number');
     if (!season.episodeIds.includes(ep.episodeId)) issues.push(ep.episodeId + ': not declared in season.episodeIds');
-    for (const key of ep.sourceKeys) if (!(key in program.sourceRegistry)) issues.push(ep.episodeId + ': unknown sourceKey ' + key);
+    for (const key of ep.sourceKeys) if (!Object.hasOwn(program.sourceRegistry, key)) issues.push(ep.episodeId + ': unknown sourceKey ' + key);
+    if (program.castScope === 'countryball-civilizations') {
+      for (const castId of ep.castIds) if (!castId.endsWith('ball')) issues.push(ep.episodeId + ': cast outside countryball scope ' + castId);
+    }
   }
   for (const id of season.episodeIds) if (!seen.has(id)) issues.push('season.episodeIds: manifest missing ' + id);
-  for (const key of season.sourceKeys) if (!(key in program.sourceRegistry)) issues.push('season: unknown sourceKey ' + key);
+  for (const key of season.sourceKeys) if (!Object.hasOwn(program.sourceRegistry, key)) issues.push('season: unknown sourceKey ' + key);
   if (issues.length) throw new P7AContractError(issues);
   return { program, season, episodes: season.episodeIds.map((id) => episodes.find((e) => e.episodeId === id)!) };
 }
